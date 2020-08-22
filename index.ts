@@ -29,3 +29,24 @@ const coffee = {
 
 // coffee.size = 'aa';
 coffee.size = CoffeSize.GRANDE;
+
+const apple: 'apple' = 'apple'
+let clothSize: 'small' | 'medium' | 'large' = 'medium'
+
+type ClothSize = 'small' | 'medium' | 'large'
+
+const cloth: {
+  color: string;
+  size: ClothSize
+} = {
+  color: 'white',
+  // size: 'big'
+  size: 'medium'
+}
+
+function add(num1: number, num2: number): number {
+  return num1 + num2
+}
+console.log(add(2, 5))
+
+let tmp: undefined = null;
