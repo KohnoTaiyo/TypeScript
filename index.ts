@@ -49,4 +49,16 @@ function add(num1: number, num2: number): number {
 }
 console.log(add(2, 5))
 
-let tmp: undefined = null;
+let tmp: undefined;
+
+// const dubleNumber = num => num * 2;
+const dubleNumber: (num: number) => number = num => num * 2;
+
+function doubleAndHandle(num: number, cb: (num: number) => number): void {
+  const doubleNum = cb(num * 2);
+  console.log(doubleNum)
+}
+
+doubleAndHandle(10, doubleNum => {
+  return doubleNum
+})
