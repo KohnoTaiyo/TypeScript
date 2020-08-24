@@ -4,10 +4,17 @@ class Person {
     this.name = initName;
   }
 
-  greeting() {
+  greeting(this: Person) {
     console.log(`hello ${this.name}`)
   }
+  // クラスも型になる。（より厳密にできる。）
 }
 const quill = new Person('Quill');
 quill.greeting();
-console.log(quill);
+
+const anotherQuill = {
+  name: 'anotherQuill',
+  // quill.greeting(), これだとエラー
+  greeting: quill.greeting
+}
+anotherQuill.greeting();
