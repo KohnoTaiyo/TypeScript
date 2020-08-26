@@ -1,18 +1,25 @@
-class Person {
+abstract class Person {
+  static species = 'Homo sapiens';
+  static isAge(age: number) {
+    if (age > 17) return true;
+    return false;
+  }
   constructor(public name: string, protected age: number) { }
   incrementAge() {
     this.age += 1;
   }
   greeting(this: Person) {
     console.log(`My name is  ${this.name}. I am ${this.age} years old.`)
+    this.explainJpb();
   }
   // クラスも型になる。（より厳密にできる。）
+  abstract explainJpb(): void;
 }
-const quill = new Person('Quill', 25);
-quill.incrementAge();
-quill.greeting();
 
 class Teacher extends Person {
+  explainJpb() {
+    console.log(`I am a teacher and I teach ${this.subject} `)
+  }
   get subject(): string {
     if (!this._subject) {
       throw new Error('There is no subject.');
@@ -28,11 +35,6 @@ class Teacher extends Person {
   constructor(name: string, age: number, public _subject: string) {
     super(name, age);
   }
-  greeting() {
-    console.log(`My name is  ${this.name}. I am ${this.age} years old. I terch ${this.subject}`)
-  }
 }
-const teacher = new Teacher('Yamada', 54, 'Math');
-console.log(teacher.subject)
-teacher.subject = 'Music'
+const teacher = new Teacher('Quill', 45, 'Math');
 teacher.greeting();
