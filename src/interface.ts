@@ -1,5 +1,14 @@
+interface addFunc {
+  (num1: number, num2: number): number;
+}
+let addFunc: addFunc;
+addFunc = (n1, n2) => {
+  return n1 + n2;
+}
+
 interface Nameable {
   name: string;
+  nickName?: string;
 }
 
 interface Human extends Nameable {
