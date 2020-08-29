@@ -23,3 +23,13 @@ stringLightDatabase.add('Banana');
 stringLightDatabase.add('Grape');
 stringLightDatabase.remove('Banana');
 console.log(stringLightDatabase.get());
+
+// 文字列に指定
+const fetchData: Promise<string> = new Promise(resolve => {
+  setTimeout(() => {
+    resolve('hello');
+  }, 3000);
+})
+fetchData.then(data => {
+  data.toUpperCase();
+})

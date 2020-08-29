@@ -12,7 +12,7 @@ abstract class Person {
     console.log(`My name is  ${this.name}. I am ${this.age} years old.`)
     this.explainJpb();
   }
-  // クラスも型になる。（より厳密にできる。）
+  // クラスも型になるし、より厳密にできる。
   abstract explainJpb(): void;
 }
 
