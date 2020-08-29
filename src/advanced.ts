@@ -14,12 +14,16 @@ const quill: EngineerBlogger = {
   follower: 1000
 }
 
-function toUpperCase(x: string | Number) {
+// 型のオーバーロード。条件式みたいな物。
+function toUpperCase(x: string): string;
+function toUpperCase(x: number): number;
+function toUpperCase(x: string | number) {
   if (typeof x === 'string') {
     return x.toUpperCase();
   }
-  return '';
+  return x;
 }
+const upperHello = toUpperCase('hello');
 
 // interface NomadWorker extends Engineer | Blogger {}
 // | は使えない
@@ -52,3 +56,38 @@ function havePet(pet: Pet) {
   }
 }
 havePet(new Bird());//->tweet-tweet,flutter
+
+const input = document.getElementById('input') as HTMLInputElement;
+input.value = 'initial input value';
+
+interface DownloadedData {
+  id: number;
+  user?: {
+    name?: {
+      first: string;
+      last: string;
+    }
+  }
+}
+const downloadedData: DownloadedData = {
+  id: 1
+}
+// ?で値がなければundefinedを返す
+console.log(downloadedData.user?.name?.first);
+
+// 0の場合でも'no-user'になってしまう。
+// const userData = downloadedData.user || 'no-user';
+const userData = downloadedData.user ?? 'no-user';
+
+// レストパラメータには配列で型を指定
+function advancedFn(...args: number[]) { }
+advancedFn(5, 2, 53, 4);
+
+// 勝手にリードオンリーなども着くので、完全に固定できる。
+const milk = 'milk' as const;
+const array = [10, 20] as const;
+const peter = {
+  name: 'Peter',
+  age: 38
+} as const;
+type PeterType = typeof peter;
